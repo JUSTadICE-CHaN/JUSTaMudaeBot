@@ -1,6 +1,6 @@
 Servers = [ 111111111111111, 22222222222,]
 Channels = {
-    1: [1.1, 1.2, 1.3], #The first one is the main channel, inside the brackets are the sub channels that have the same timers (roll resets, etc)
+    1: [1., 1.2, 1.3], #The first one is the main channel, inside the brackets are the sub channels that have the same timers (roll resets, etc)
     2: [2.1, 2.2, 2.3],
 }
 Token = 'YOUR TOKEN HERE'
