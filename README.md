@@ -6,12 +6,12 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 
 ## Requirements
 
-`pip install discord.py-self`
-`pip install discum`
-`pip install threading`
-`pip install datetime`
-`pip install re`
-
+```pip install discord.py-self
+pip install discum
+pip install threading
+pip install datetime
+pip install re
+```
 ## Using the bot
 
 Fill in your details in Config and thats it :sunglasses:
