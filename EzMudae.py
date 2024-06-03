@@ -130,8 +130,9 @@ class Waifu:
         try:
             lines = desc.split("\n")
         except:
-            raise WaifuTypeError("Non Waifu Message")
-
+            print("Not True Waifu Message")
+            return
+            
         self.name = embed.author.name
         self.image = embed.image.url
 

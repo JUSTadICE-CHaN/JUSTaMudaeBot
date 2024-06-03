@@ -24,7 +24,7 @@ class MyClient(discord.Client):
         self.is_ready = False
 
     async def on_ready(self):
-        print(f'Logged on as {self.user} ({self.user.id})')
+        print(f'Logged on as {self.user.name} ({self.user.id})')
         await self.initialize_channels()
 
     async def initialize_channels(self):
@@ -248,7 +248,7 @@ class MyClient(discord.Client):
 
     async def handle_bot_message(self, message):
         if message.author.id == bot_id:
-            if 'Upvote Mudae to reset the timer:' in message.content and f'**{self.user}**' in message.content:
+            if 'Upvote Mudae to reset the timer:' in message.content and f'**{self.user.name}**' in message.content:
                 channel_id = message.channel.id
                 self.rolling[channel_id].rolling_event.set()
 
