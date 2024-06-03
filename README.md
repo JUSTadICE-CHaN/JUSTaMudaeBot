@@ -22,6 +22,10 @@ pip install re
 
 Fill in your details in Config and thats it :sunglasses:
 
+## Credits
+
+Credits to [Znunu’s EzMudae](https://github.com/Znunu/EzMudae) for the amazing module that allowed this project to even function in the first place and [JasonYuan869’s regex implementation](https://github.com/JasonYuan869/AutoWaifuClaimerV3). 
+
 ## Disclaimer
 
 I am not responsible for anything that goes wrong as a result of using this bot.
