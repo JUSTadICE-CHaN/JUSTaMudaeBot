@@ -225,14 +225,13 @@ class MyClient(discord.Client):
                 await child.click()
 
     async def attempt_claim(self, waifu, message, main_channel_id):
-        if waifu.kakera > Config.lastminkak or waifu.kakera > Config.minkak:
+        if waifu.kakera > Config.lastminkak or waifu.kakera > Config.minkak or waifu.name in Config.Wishlist:
             if self.rolling[main_channel_id].get_claim_availability():
                 if self.rolling[main_channel_id].is_last_min_claim_active():
-                    if waifu.kakera >= Config.lastminkak or waifu.kakera >= Config.minkak:
-                        await self.claim_waifu(message, waifu)
-                else:
-                    if waifu.kakera >= Config.minkak:
-                        await self.claim_waifu(message, waifu)
+                        if waifu.kakera >= Config.lastminkak or waifu.name in Config.Wishlist:
+                            await self.claim_waifu(message, waifu)
+                elif waifu.kakera >= Config.minkak or waifu.name in Config.Wishlist:
+                    await self.claim_waifu(message, waifu)
             else:
                 print(f"No Claim Available for - {message.channel.name} - to claim {waifu}")
 

@@ -8,6 +8,10 @@ Rollcommand = 'ROLL COMMAND HERE (wa/wg/ma/etc)'
 
 AlwaysRoll = True
 
+Wishlist = ['Zero Two', 
+            'Rem', 
+            'Megumin',]
+
 #Durations in minutes 
 Daily = 1200
 Claim = 180
