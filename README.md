@@ -17,6 +17,7 @@ pip install discum
 pip install threading
 pip install datetime
 pip install re
+pip install discord.py-self
 ```
 ## Using the bot
 
