@@ -24,6 +24,8 @@ class MyClient(discord.Client):
         self.is_ready = False
 
     async def on_ready(self):
+        if self.is_ready:
+            return
         print(f'Logged on as {self.user.name} ({self.user.id})')
         await self.initialize_channels()
 
