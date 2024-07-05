@@ -14,10 +14,11 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 
 ```pip install discord.py-self
 pip install discum
-pip install threading
+pip install thread6
 pip install datetime
-pip install re
+pip install regex
 pip install discord.py-self
+pip install parse
 ```
 ## Using the bot
 
