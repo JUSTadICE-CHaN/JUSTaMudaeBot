@@ -22,7 +22,7 @@ pip install parse
 ```
 ## Using the bot
 
-Fill in your details in Config and run normal.py, thats it :sunglasses:
+Fill in your details in Config and run normal.py, thats it.
 
 ## Credits
 
