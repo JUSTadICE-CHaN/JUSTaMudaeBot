@@ -1,4 +1,4 @@
-# MudaeAutoClaimBot
+# JUSTaMudaeBot
 
 This is a bot that utilizes some aspects of discord.py-self and discum to create a discord self bot that can claim wishes and characters above a min kakera, last minute claim and react to kakera. 
 
