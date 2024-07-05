@@ -30,4 +30,4 @@ Credits to [Znunu’s EzMudae](https://github.com/Znunu/EzMudae) for the amazing
 
 ## Disclaimer
 
-I am not responsible for anything that goes wrong as a result of using this bot.
+I am not responsible for anything that goes wrong as a result of using this bot. This is a discord **selfbot** and may get you banned.
