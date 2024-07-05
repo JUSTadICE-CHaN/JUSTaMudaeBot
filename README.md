@@ -26,7 +26,11 @@ Fill in your details in Config and run normal.py, thats it. Please leave me a st
 
 ## Credits
 
-Credits to [Znunu’s EzMudae](https://github.com/Znunu/EzMudae) for the amazing module that allowed this project to even function in the first place and [JasonYuan869’s regex implementation](https://github.com/JasonYuan869/AutoWaifuClaimerV3). 
+Credits to [Znunu’s EzMudae](https://github.com/Znunu/EzMudae) for the amazing module that allowed this project to even function in the first place and [JasonYuan869’s regex implementation](https://github.com/JasonYuan869/AutoWaifuClaimerV3).
+
+## License
+
+Released under MIT. See `LICENSE` for details.
 
 ## Disclaimer
 
