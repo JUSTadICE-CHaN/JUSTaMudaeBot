@@ -12,6 +12,11 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 
 ### Requirements
 
+- Python 3.10+
+- Being able to read
+- Below are the module dependency installation commands
+  - Simply copy paste them into command line (Terminal or windows powershell)
+
 ```pip install discord.py-self
 pip install discum
 pip install thread6
