@@ -13,6 +13,7 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 ### Requirements
 
 - Python 3.10+
+- Being able to obtain discord token (You can use this [tool](https://chromewebstore.google.com/detail/discord-get-user-token/accgjfooejbpdchkfpngkjjdekkcbnfd)
 - Being able to read
 - Below are the module dependency installation commands
   - Simply copy paste them into command line (Terminal or windows powershell)
