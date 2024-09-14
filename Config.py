@@ -9,6 +9,7 @@ Rollprefix = 'YOUR ROLL PREFIX HERE (default is $)'
 
 AlwaysRoll = True #Whether it continue to roll after a claim or not
 Snipe = False #True to enable sniping others
+SnipeKak = False #True to enable sniping others
 
 Wishlist = ['Zero Two', 
             'Rem', 
