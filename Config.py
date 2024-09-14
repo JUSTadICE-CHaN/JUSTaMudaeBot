@@ -5,6 +5,7 @@ Channels = {
 }
 Token = 'YOUR TOKEN HERE'
 Rollcommand = 'ROLL COMMAND HERE (wa/wg/ma/etc)'
+Rollprefix = 'YOUR ROLL PREFIX HERE (default is $)'
 
 AlwaysRoll = True #Whether it continue to roll after a claim or not
 
