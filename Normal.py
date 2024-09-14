@@ -218,7 +218,8 @@ class MyClient(discord.Client):
             await self.attempt_kakera_snipe(message, waifu)
         else:
             print(f"🤍 ---- {waifu.kakera} - {waifu} - {waifu.series} - in {channel_name} by {user}")
-            await self.attempt_claim(waifu, message, main_channel_id)
+            if ((user != self.user.name) and Config.Snipe) or user == self.user:
+                await self.attempt_claim(waifu, message, main_channel_id)
 
     async def attempt_kakera_snipe(self, message, waifu):
         if message.components:
