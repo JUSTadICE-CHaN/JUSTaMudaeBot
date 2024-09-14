@@ -28,7 +28,7 @@ pip install parse
 ```
 ## Using the bot
 
-Fill in your details in Config and run normal.py, thats it. Please leave me a star if it works!
+Fill in your details in Config, then go to a channel in one of the channels you want the bot to run in and call mudae help to get a help dm (either /help or $help or whatever your help command is). Then run normal.py, thats it. Please leave me a star if it works!
 
 ## Credits
 
