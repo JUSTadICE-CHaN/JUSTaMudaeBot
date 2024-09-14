@@ -48,7 +48,7 @@ class MyClient(discord.Client):
 
         try:
             print(f'Sending message in {main_channel_obj.name}')
-            await main_channel_obj.send('$tu')
+            await main_channel_obj.send(Config.Rollprefix + 'tu')
             message = await self.wait_for('message', timeout=3, check=lambda m: m.channel == main_channel_obj)
             await asyncio.sleep(1)
             await self.tuparsing(message, main_channel)
