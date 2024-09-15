@@ -103,12 +103,12 @@ class Timer:
             sub_channels = Config.Channels.get(main_channel, [])
 
             # Send message $dk in all main channels
-            await self.send_messages([main_channel] + sub_channels, '$dk')
+            await self.send_messages([main_channel] + sub_channels, f'{Config.Rollprefix}dk')
             await asyncio.sleep(3)  # Wait 3 seconds for processing
 
             # Send message $daily only in the first main channel
             if main_channel == list(Config.Channels.keys())[0]:
-                await self.client.get_channel(main_channel).send('$daily')
+                await self.client.get_channel(main_channel).send(f'{Config.Rollprefix}daily')
 
     async def wait_for_p(self):
         while True:
@@ -118,7 +118,7 @@ class Timer:
 
             # Send message $p only in the first main channel
             if main_channel == list(Config.Channels.keys())[0]:
-                await self.send_messages([main_channel], '$p')
+                await self.send_messages([main_channel], f'{Config.Rollprefix}p')
 
     async def send_messages(self, channels, message):
         main_channels = [channel_id for channel_id in channels if channel_id in Config.Channels]
