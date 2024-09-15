@@ -78,7 +78,7 @@ class MyClient(discord.Client):
     async def find_previous_message(self, main_channel_obj, main_channel):
         user_message = None
         async for prev_message in main_channel_obj.history(limit=10, before=message):
-            if prev_message.author.id == self.user.id and '$tu' in prev_message.content:
+            if prev_message.author.id == self.user.id and f'{Config.Rollprefix}tu' in prev_message.content:
                 user_message = prev_message
                 break
         if user_message:
@@ -209,7 +209,7 @@ class MyClient(discord.Client):
 
         if message.interaction is None:
             async for prev_message in message.channel.history(limit=5, before=message):
-                if '$' in prev_message.content:
+                if Config.Rollprefix in prev_message.content:
                     user = prev_message.author.name
                     break
 
