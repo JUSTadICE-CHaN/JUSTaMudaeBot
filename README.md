@@ -6,6 +6,7 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 - Can claim characters above a certain kakera 
 - Can last minute claim during the last 60 minutes of claim timer
 - Can react to kakera buttons
+- Can choose whether to snipe or not
 - Can operate multiple servers and channels and have some channels share the same timers/properties
 
 ## Installation
