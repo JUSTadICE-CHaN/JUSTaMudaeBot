@@ -216,10 +216,12 @@ class MyClient(discord.Client):
         if waifu.is_claimed:
             print(f"❤️ ---- {waifu.kakera} - {waifu} - {waifu.series} - in {channel_name} by {user}")
             if ((user != self.user.name) and Config.SnipeKak) or user == self.user.name:
+                await asyncio.sleep(Config.DelayKak)
                 await self.attempt_kakera_snipe(message, waifu)
         else:
             print(f"🤍 ---- {waifu.kakera} - {waifu} - {waifu.series} - in {channel_name} by {user}")
             if ((user != self.user.name) and Config.Snipe) or user == self.user.name:
+                await asyncio.sleep(Config.Delay)
                 await self.attempt_claim(waifu, message, main_channel_id)
 
     async def attempt_kakera_snipe(self, message, waifu):
