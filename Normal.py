@@ -183,7 +183,10 @@ class MyClient(discord.Client):
             message.author == self.user or
             message.guild is None or
             message.guild.id not in self.allowed_guilds or
-            message.channel.id not in Config.Channels
+            (
+                message.channel.id not in Config.Channels and 
+                not any(message.channel.id in subchannels for subchannels in Config.Channels.values())
+            )
         )
 
     def get_main_channel_id(self, channel_id):
