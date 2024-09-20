@@ -189,6 +189,7 @@ class MyClient(discord.Client):
             )
         )
 
+
     def get_main_channel_id(self, channel_id):
         for main_channel, sub_channels in Config.Channels.items():
             if channel_id == main_channel or channel_id in sub_channels:
