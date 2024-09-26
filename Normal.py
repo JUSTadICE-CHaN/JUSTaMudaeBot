@@ -230,8 +230,11 @@ class MyClient(discord.Client):
         if message.components:
             print(f"\nAttempting to snipe kakera for {waifu}\n")
             for child in message.components[0].children:
-                await child.click()
-
+                if child.emoji.name in Config.Kakera:
+                    pass
+                else:
+                    await child.click()
+                
     async def attempt_claim(self, waifu, message, main_channel_id):
         if waifu.kakera > Config.lastminkak or waifu.kakera > Config.minkak or waifu.name in Config.Wishlist:
             if self.rolling[main_channel_id].get_claim_availability():
