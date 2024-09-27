@@ -24,7 +24,7 @@ Roll = 60
 Kakera = []
 # All Known Kakera emojis
 # 'KakeraP',
-# 'KakeraB',
+# 'Kakera',
 # 'KakeraT',
 # 'KakeraG',
 # 'KakeraY',
