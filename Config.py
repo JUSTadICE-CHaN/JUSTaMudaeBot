@@ -23,15 +23,17 @@ Claim = 180
 Roll = 60
 
 #Any Kakera in this List will be IGNORED AND NOT SNIPED, remove the ones you WANT TO CLAIM for the bot to claim them. 
-Kakera = ['KakeraP',
-          'KakeraB',
-          'KakeraT',
-          'KakeraG',
-          'KakeraY',
-          'KakeraO',
-          'KakeraR',
-          'KakeraW',
-          'KakeraL',]
+Kakera = []
+# All Known Kakera emojis
+# 'KakeraP',
+# 'KakeraB',
+# 'KakeraT',
+# 'KakeraG',
+# 'KakeraY',
+# 'KakeraO',
+# 'KakeraR',
+# 'KakeraW',
+# 'KakeraL',
 
 #claim stuff
 minkak = 200 #minimum kakera to claim
