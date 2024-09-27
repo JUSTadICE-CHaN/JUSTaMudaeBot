@@ -230,11 +230,11 @@ class MyClient(discord.Client):
 
     async def attempt_kakera_snipe(self, message, waifu):
         if message.components:
-            print(f"\nAttempting to snipe kakera for {waifu}\n")
             for child in message.components[0].children:
                 if child.emoji.name in Config.Kakera:
                     pass
                 else:
+                    print(f"\nAttempting to snipe kakera for {waifu} ({child.emoji.name})\n")
                     await child.click()
                 
     async def attempt_claim(self, waifu, message, main_channel_id):
