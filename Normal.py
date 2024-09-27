@@ -231,7 +231,8 @@ class MyClient(discord.Client):
     async def attempt_kakera_snipe(self, message, waifu):
         if message.components:
             for child in message.components[0].children:
-                if child.emoji.name in Config.Kakera:
+                if child.emoji.name.lower() in [k.lower() for k in Config.Kakera]:
+                    print(f"{child.emoji.name} will not be claimed as its been disabled")
                     pass
                 else:
                     print(f"\nAttempting to snipe kakera for {waifu} ({child.emoji.name})\n")
