@@ -111,14 +111,15 @@ class Timer:
                 await self.client.get_channel(main_channel).send(f'{Config.Rollprefix}daily')
 
     async def wait_for_p(self):
-        while True:
-            await asyncio.sleep(3 * 60 * 60)  # Wait for 3 hours
-            main_channel = self.channel_id
-            sub_channels = Config.Channels.get(main_channel, [])
-
-            # Send message $p only in the first main channel
-            if main_channel == list(Config.Channels.keys())[0]:
-                await self.send_messages([main_channel], f'{Config.Rollprefix}p')
+        if Config.Pokeroll is True:
+            while True:
+                await asyncio.sleep(3 * 60 * 60)  # Wait for 3 hours
+                main_channel = self.channel_id
+                sub_channels = Config.Channels.get(main_channel, [])
+    
+                # Send message $p only in the first main channel
+                if main_channel == list(Config.Channels.keys())[0]:
+                    await self.send_messages([main_channel], f'{Config.Rollprefix}p')
 
     async def send_messages(self, channels, message):
         main_channels = [channel_id for channel_id in channels if channel_id in Config.Channels]
