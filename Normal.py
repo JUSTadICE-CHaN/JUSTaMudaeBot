@@ -190,7 +190,6 @@ class MyClient(discord.Client):
             )
         )
 
-
     def get_main_channel_id(self, channel_id):
         for main_channel, sub_channels in Config.Channels.items():
             if channel_id == main_channel or channel_id in sub_channels:
@@ -199,7 +198,6 @@ class MyClient(discord.Client):
 
     async def handle_waifu_message(self, waifu, message, main_channel_id):
         embed = message.embeds[0]
-        waifu_dict = {attr: getattr(waifu, attr) for attr in dir(waifu) if not attr.startswith('__') and not callable(getattr(waifu, attr))}
 
         if waifu.type == waifu.Type.info:
             print("Just an $im command or something")
@@ -286,16 +284,16 @@ class MyClient(discord.Client):
         await asyncio.sleep(2)
         async for next_message in reaction.message.channel.history(limit=20, after=message):
             if next_message.author.id == bot_id and self.user.name in next_message.content and waifu.name in next_message.content:
-                await reaction.message.channel.send('ezez')
+                await reaction.message.channel.send(Config.Message)
                 print(f"{waifu.name} Claimed")
                 self.rolling[main_channel_id].set_claim_availability(False)
                 if not Config.AlwaysRoll:
                     self.rolling[main_channel_id].rolling_event.set()
                 break
-            elif f"<@{self.user.id}>" in next_message.content and "For this server" in message.content:
+            elif f"{self.user.id}" in next_message.content and next_message.author.id == bot_id:
                 self.rolling[main_channel_id].set_claim_availability(False)
                 print("Claim already used")
-                if not Config.AlwaysRoll or message.author.name != self.user.name:
+                if not Config.AlwaysRoll:
                     self.rolling[main_channel_id].rolling_event.set()
                 break
 
