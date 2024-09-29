@@ -12,6 +12,8 @@ Snipe = False #True to enable sniping others
 SnipeKak = False #True to enable sniping others
 Delay = 0 #Time for delaying claim
 DelayKak = 0 #Time for delaying kakera
+Message = 'ezez' #message you want to send when you claim a character, make it None to send nothing
+# Message = None
 
 Wishlist = ['Zero Two', 
             'Rem', 
