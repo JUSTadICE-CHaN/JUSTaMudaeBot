@@ -295,7 +295,7 @@ class MyClient(discord.Client):
             elif f"<@{self.user.id}>" in next_message.content and "For this server" in message.content:
                 self.rolling[main_channel_id].set_claim_availability(False)
                 print("Claim already used")
-                if not Config.AlwaysRoll:
+                if not Config.AlwaysRoll or message.author.name != self.user.name:
                     self.rolling[main_channel_id].rolling_event.set()
                 break
 
