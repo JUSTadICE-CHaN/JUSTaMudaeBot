@@ -53,18 +53,18 @@ class MyClient(discord.Client):
             await asyncio.sleep(1)
             await self.tuparsing(message, main_channel)
             channel_status[main_channel] = True
-            self.print_current_timers(main_channel_obj, main_channel)
+            await self.print_current_timers(main_channel_obj, main_channel, message)
 
         except asyncio.TimeoutError:
             print(f'No response received in {main_channel_obj.name} within 3 seconds')
             self.handle_timeout(main_channel_obj, message, main_channel, channel_status)
 
-    def print_current_timers(self, main_channel_obj, main_channel):
+    async def print_current_timers(self, main_channel_obj, main_channel, message):
         try:
             timers = self.rolling[main_channel].get_timers()
             print(f"Current timers for {main_channel_obj.name}: {timers}")
         except:
-            self.find_previous_message(main_channel_obj, main_channel)
+            await self.find_previous_message(main_channel_obj, main_channel, message)
 
     def handle_timeout(self, main_channel_obj, message, main_channel, channel_status):
         self.find_previous_message(main_channel_obj, main_channel)
@@ -72,10 +72,10 @@ class MyClient(discord.Client):
             timers = self.rolling[main_channel].get_timers()
             print(f"Current timers for {main_channel_obj.name}: {timers}")
         except:
-            self.find_previous_message(main_channel_obj, main_channel)
+            self.find_previous_message(main_channel_obj, main_channel, message)
         channel_status[main_channel] = True
 
-    async def find_previous_message(self, main_channel_obj, main_channel):
+    async def find_previous_message(self, main_channel_obj, main_channel, message):
         user_message = None
         async for prev_message in main_channel_obj.history(limit=10, before=message):
             if prev_message.author.id == self.user.id and f'{Config.Rollprefix}tu' in prev_message.content:
