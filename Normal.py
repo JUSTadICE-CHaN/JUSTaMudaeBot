@@ -57,7 +57,7 @@ class MyClient(discord.Client):
 
         except asyncio.TimeoutError:
             print(f'No response received in {main_channel_obj.name} within 3 seconds')
-            self.handle_timeout(main_channel_obj, message, main_channel, channel_status)
+            await self.handle_timeout(main_channel_obj, message, main_channel, channel_status)
 
     async def print_current_timers(self, main_channel_obj, main_channel, message):
         try:
@@ -66,13 +66,13 @@ class MyClient(discord.Client):
         except:
             await self.find_previous_message(main_channel_obj, main_channel, message)
 
-    def handle_timeout(self, main_channel_obj, message, main_channel, channel_status):
-        self.find_previous_message(main_channel_obj, main_channel)
+    async def handle_timeout(self, main_channel_obj, message, main_channel, channel_status):
+        await self.find_previous_message(main_channel_obj, main_channel, message)
         try:
             timers = self.rolling[main_channel].get_timers()
-            print(f"Current timers for {main_channel_obj.name}: {timers}")
+            print(f"Just to confirm, Current timers for {main_channel_obj.name} are: {timers}")
         except:
-            self.find_previous_message(main_channel_obj, main_channel, message)
+            await self.find_previous_message(main_channel_obj, main_channel, message)
         channel_status[main_channel] = True
 
     async def find_previous_message(self, main_channel_obj, main_channel, message):
