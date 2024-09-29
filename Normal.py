@@ -107,6 +107,7 @@ class MyClient(discord.Client):
                                 .*$                                         # End of string
                                 """, message.content, re.DOTALL | re.VERBOSE)
         if not match or match.group(1) != self.user.name:
+            print(f'Failed to parse message:\n {message.content}')
             return
 
         times = [self.parse_time(match.group(i)) for i in [3, 4, 5, 7]]
