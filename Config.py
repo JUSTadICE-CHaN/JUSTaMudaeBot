@@ -12,6 +12,7 @@ Snipe = False #True to enable sniping others
 SnipeKak = False #True to enable sniping others
 Message = 'ezez' #message you want to send when you claim a character, make it None to send nothing
 # Message = None
+Pokeroll = False # Whether you want to pokeroll or not i guess
 
 Wishlist = ['Zero Two', 
             'Rem', 
