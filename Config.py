@@ -10,6 +10,8 @@ Rollprefix = 'YOUR ROLL PREFIX HERE (default is $)'
 AlwaysRoll = True #Whether it continue to roll after a claim or not
 Snipe = False #True to enable sniping others
 SnipeKak = False #True to enable sniping others
+Message = 'ezez' #message you want to send when you claim a character, make it None to send nothing
+# Message = None
 
 Wishlist = ['Zero Two', 
             'Rem', 
