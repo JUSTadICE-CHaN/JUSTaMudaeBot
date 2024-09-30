@@ -286,7 +286,10 @@ class MyClient(discord.Client):
         await asyncio.sleep(2)
         async for next_message in reaction.message.channel.history(limit=20, after=message):
             if next_message.author.id == bot_id and self.user.name in next_message.content and waifu.name in next_message.content:
-                await reaction.message.channel.send(Config.Message)
+                if Config.Message is not None:
+                    await reaction.message.channel.send(Config.Message)
+                else:
+                    pass
                 print(f"{waifu.name} Claimed")
                 self.rolling[main_channel_id].set_claim_availability(False)
                 if not Config.AlwaysRoll:
