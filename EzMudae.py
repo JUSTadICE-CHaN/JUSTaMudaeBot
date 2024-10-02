@@ -167,14 +167,15 @@ class Waifu:
                 self.likes = parse.search("Like Rank: #{:d}", line)[0]
 
         footer = embed.footer.text
-        for pattern in patterns:
-            match = parse.parse(pattern, footer)
-            if match:
-                self.owner = match[-1].strip()  # Always take the owner from the last matched group
-                self.is_claimed = True
-                break
-        else:
-            self.is_claimed = False
+        if footer is not None:
+            for pattern in patterns:
+                match = parse.parse(pattern, footer)
+                if match:
+                    self.owner = match[-1].strip()  # Always take the owner from the last matched group
+                    self.is_claimed = True
+                    break
+            else:
+                self.is_claimed = False
             # if footer is not None:
         #     match = parse.parse("Belongs to {}", footer.split(" ~~")[0])
         #     if match is not None:
@@ -182,9 +183,9 @@ class Waifu:
         #         self.is_claimed = True
         #     else:
         #         self.is_claimed = False
-        #     match = parse.search("{:d} / {:d}", footer)
-        #     if match is not None and self.gender == self.Type.roll:
-        #         raise Exception("This waifu has multiple images but is also missing a gender. this shouldn't happen")
+            match = parse.search("{:d} / {:d}", footer)
+            if match is not None and self.gender == self.Type.roll:
+                raise Exception("This waifu has multiple images but is also missing a gender. this shouldn't happen")
 
 
     async def fetch_extra(self):
