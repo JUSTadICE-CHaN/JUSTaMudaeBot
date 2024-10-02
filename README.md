@@ -8,6 +8,9 @@ This is a bot that utilizes some aspects of discord.py-self and discum to create
 - Can react to kakera buttons
 - Can choose whether to snipe or not
 - Can operate multiple servers and channels and have some channels share the same timers/properties
+- Custom delay
+- Selective Kakera Claim
+- Custom claim message
 
 ## Installation
 
@@ -30,6 +33,11 @@ pip install parse
 ## Using the bot
 
 Fill in your details in Config, then go to a channel in one of the channels you want the bot to run in and call mudae help to get a help dm (either /help or $help or whatever your help command is). Then run normal.py, thats it. Please leave me a star if it works!
+
+#### PLEASE MAKE SURE THAT YOUR $TU COMMAND LOOKS EXACTLY LIKE THIS
+![image](https://github.com/user-attachments/assets/9793e3ba-b477-4e2d-bce2-9960cd63690b)
+#### IF ITS NOT EXACTLY AS ABOVE YOU WILL HAVE PARSING ISSUES!!!
+(i am working to make this less annoying)
 
 ## Credits
 
