@@ -119,6 +119,11 @@ class Waifu:
         self.gender = None  # Appears only in the description of im
         self.type = None
         self.is_claimed = None
+        
+        patterns = [
+            "⚠️ {} ROLLS LEFT ⚠️ · Belongs to {}",  # Pattern with rolls left
+            "Belongs to {}",                        # Simple pattern
+        ]
 
         # Message is missing parts to match against and can't be a match
         if message.author != self.mudae or not len(message.embeds) == 1 or message.embeds[0].image is None:
@@ -162,16 +167,24 @@ class Waifu:
                 self.likes = parse.search("Like Rank: #{:d}", line)[0]
 
         footer = embed.footer.text
-        if footer is not None:
-            match = parse.parse("Belongs to {}", footer.split(" ~~")[0])
-            if match is not None:
-                self.owner = match[0].strip()
+        for pattern in patterns:
+            match = parse.parse(pattern, footer)
+            if match:
+                self.owner = match[-1].strip()  # Always take the owner from the last matched group
                 self.is_claimed = True
-            else:
-                self.is_claimed = False
-            match = parse.search("{:d} / {:d}", footer)
-            if match is not None and self.gender == self.Type.roll:
-                raise Exception("This waifu has multiple images but is also missing a gender. this shouldn't happen")
+                break
+        else:
+            self.is_claimed = False
+            # if footer is not None:
+        #     match = parse.parse("Belongs to {}", footer.split(" ~~")[0])
+        #     if match is not None:
+        #         self.owner = match[0].strip()
+        #         self.is_claimed = True
+        #     else:
+        #         self.is_claimed = False
+        #     match = parse.search("{:d} / {:d}", footer)
+        #     if match is not None and self.gender == self.Type.roll:
+        #         raise Exception("This waifu has multiple images but is also missing a gender. this shouldn't happen")
 
 
     async def fetch_extra(self):
