@@ -238,12 +238,12 @@ class MyClient(discord.Client):
                     await child.click()
                 
     async def attempt_claim(self, waifu, message, main_channel_id):
-        if waifu.kakera > Config.lastminkak or waifu.kakera > Config.minkak or waifu.name in Config.Wishlist:
+        if waifu.kakera > Config.lastminkak or waifu.kakera > Config.minkak or waifu.name in Config.Wishlist or f"{self.user.id}" in message.content:
             if self.rolling[main_channel_id].get_claim_availability():
                 if self.rolling[main_channel_id].is_last_min_claim_active():
-                        if waifu.kakera >= Config.lastminkak or waifu.name in Config.Wishlist:
+                        if waifu.kakera >= Config.lastminkak or waifu.name in Config.Wishlist or f"{self.user.id}" in message.content:
                             await self.claim_waifu(message, waifu)
-                elif waifu.kakera >= Config.minkak or waifu.name in Config.Wishlist:
+                elif waifu.kakera >= Config.minkak or waifu.name in Config.Wishlist or f"{self.user.id}" in message.content:
                     await self.claim_waifu(message, waifu)
             else:
                 print(f"No Claim Available for - {message.channel.name} - to claim {waifu}")
@@ -252,9 +252,11 @@ class MyClient(discord.Client):
         print(f"\nTrying to claim {waifu}\n")
         if message.components:
             print("Possibly a wish")
-            for child in message.components[0].children:
-                await child.click()
-            await message.add_reaction('❤️')
+            if message.components is None:
+                await message.add_reaction('❤️')
+            else:
+                for child in message.components[0].children:
+                    await child.click()
         else:
             await message.add_reaction('❤️')
 
