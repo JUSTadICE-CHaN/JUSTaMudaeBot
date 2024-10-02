@@ -8,16 +8,14 @@ Rollcommand = 'ROLL COMMAND HERE (wa/wg/ma/etc)'
 Rollprefix = 'YOUR ROLL PREFIX HERE (default is $)'
 
 AlwaysRoll = True #Whether it continue to roll after a claim or not
+Pokeroll = False # Whether you want to pokeroll or not i guess
+
 Snipe = False #True to enable sniping others
 SnipeKak = False #True to enable sniping others
-Message = 'ezez' #message you want to send when you claim a character, make it None to send nothing
-# Message = None
-Pokeroll = False # Whether you want to pokeroll or not i guess
 Delay = 0 #Time for delaying claim
 DelayKak = 0 #Time for delaying kakera
 Message = 'ezez' #message you want to send when you claim a character, make it None to send nothing
 # Message = None
-Pokeroll = False # Whether you want to pokeroll or not i guess
 
 Wishlist = ['Zero Two', 
             'Rem', 
