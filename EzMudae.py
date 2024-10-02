@@ -176,6 +176,8 @@ class Waifu:
                     break
             else:
                 self.is_claimed = False
+        else:
+            self.is_claimed = False
             # if footer is not None:
         #     match = parse.parse("Belongs to {}", footer.split(" ~~")[0])
         #     if match is not None:
