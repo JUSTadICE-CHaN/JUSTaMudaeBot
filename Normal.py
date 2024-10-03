@@ -83,7 +83,7 @@ class MyClient(discord.Client):
                 break
         if user_message:
             async for prev_message in main_channel_obj.history(limit=10, after=user_message):
-                if bot_id in prev_message.author.id and self.user.name in prev_message.content:
+                if bot_id == prev_message.author.id and self.user.name in prev_message.content:
                     print(f'Found previous message containing bot ID and user ID in {main_channel_obj.name}')
                     await self.tuparsing(prev_message, main_channel)
                     timers = self.rolling[main_channel].get_timers()
