@@ -168,23 +168,13 @@ class Waifu:
 
         footer = embed.footer.text
         if footer is not None:
-            for pattern in patterns:
-                match = parse.parse(pattern, footer)
-                if match:
-                    self.owner = match[-1].strip()  # Always take the owner from the last matched group
-                    self.is_claimed = True
-                    break
+            # Use a single pattern to extract the owner
+            match = parse.parse("Belongs to {}", footer)
+            if match:
+                self.owner = match[0].strip()  # Extract and clean up the owner
+                self.is_claimed = True           # Mark as claimed
             else:
-                self.is_claimed = False
-        else:
-            self.is_claimed = False
-            # if footer is not None:
-        #     match = parse.parse("Belongs to {}", footer.split(" ~~")[0])
-        #     if match is not None:
-        #         self.owner = match[0].strip()
-        #         self.is_claimed = True
-        #     else:
-        #         self.is_claimed = False
+                self.is_claimed = False          # If no match, mark as not claimed
             match = parse.search("{:d} / {:d}", footer)
             if match is not None and self.gender == self.Type.roll:
                 raise Exception("This waifu has multiple images but is also missing a gender. this shouldn't happen")
