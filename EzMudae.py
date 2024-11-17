@@ -121,8 +121,8 @@ class Waifu:
         self.is_claimed = None
         
         patterns = [
-            "⚠️ {} ROLLS LEFT ⚠️ · Belongs to {}",  # Pattern with rolls left
-            "Belongs to {}",                        # Simple pattern
+            "⚠️ {} ROLLS RESTANTS ⚠️ · Appartient à {}",  # Pattern with rolls left
+            "Appartient à {}",                           # Simple pattern
         ]
 
         # Message is missing parts to match against and can't be a match
@@ -169,7 +169,7 @@ class Waifu:
         footer = embed.footer.text
         if footer is not None:
             # Use a single pattern to extract the owner
-            match = parse.parse("Belongs to {}", footer)
+            match = parse.parse("Appartient à {}", footer)
             if match:
                 self.owner = match[0].strip()  # Extract and clean up the owner
                 self.is_claimed = True           # Mark as claimed
