@@ -100,7 +100,7 @@ class MyClient(discord.Client):
                                 (\d+(?:h\ \d+)?)(?=\*\*\ min).*?            # Group 4: Rolls reset
                                 (?<=\$daily).*?(disponible|\d+h\ \d+).*?    # Group 5: $daily reset
                                 (pouvez|pas).*?(?=réagir).*?               # Group 6: Kakera available
-                                (?:(\d+(?:h\ \d+)?)(?=\*\*\ min)|(now)).*?  # Group 7: Kakera reset
+                                (?:(\d+(?:h\ \d+)?)(?=\*\*\ min)|(maintenant)).*?  # Group 7: Kakera reset
                                 (?<=\$dk).*?(prêt|\d+h\ \d+)                # Group 8: $dk reset
                                 .*$                                         # End of string
                                 """, message.content, re.DOTALL | re.VERBOSE)
@@ -130,7 +130,7 @@ class MyClient(discord.Client):
         elif 'h ' in time_str:
             hours, minutes = map(int, time_str.split('h '))
             return hours * 60 + minutes
-        elif time_str in {'ready', 'now', 'available'}:
+        elif time_str in {'prêt', 'maintenant', 'disponible'}:
             return 0
         else:
             return int(time_str)
