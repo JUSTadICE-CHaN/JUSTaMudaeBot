@@ -95,13 +95,13 @@ class MyClient(discord.Client):
             return
 
         match = re.search(r"""^.*?\*\*(.*?)\*\*.*?                          # Group 1: Username
-                                (can't|can).*?                              # Group 2: Claim available
+                                (pouvez|remarier).*?                         # Group 2: Claim available
                                 (\d+(?:h\ \d+)?)(?=\*\*\ min).*?            # Group 3: Claim reset
                                 (\d+(?:h\ \d+)?)(?=\*\*\ min).*?            # Group 4: Rolls reset
-                                (?<=\$daily).*?(available|\d+h\ \d+).*?     # Group 5: $daily reset
-                                (can't|can).*?(?=react).*?                  # Group 6: Kakera available
+                                (?<=\$daily).*?(disponible|\d+h\ \d+).*?    # Group 5: $daily reset
+                                (pouvez|pas).*?(?=réagir).*?               # Group 6: Kakera available
                                 (?:(\d+(?:h\ \d+)?)(?=\*\*\ min)|(now)).*?  # Group 7: Kakera reset
-                                (?<=\$dk).*?(ready|\d+h\ \d+)               # Group 8: $dk reset
+                                (?<=\$dk).*?(prêt|\d+h\ \d+)                # Group 8: $dk reset
                                 .*$                                         # End of string
                                 """, message.content, re.DOTALL | re.VERBOSE)
         if not match or match.group(1) != self.user.name:
@@ -109,8 +109,8 @@ class MyClient(discord.Client):
             return
 
         times = [self.parse_time(match.group(i)) for i in [3, 4, 5, 7]]
-        kakera_available = match.group(6) == 'can'
-        claim_available = match.group(2) == 'can'
+        kakera_available = match.group(6) == 'pouvez'
+        claim_available = match.group(2) == 'pouvez'
 
         timing_info = {
             'claim_reset': datetime.datetime.now() + datetime.timedelta(minutes=times[0]),
