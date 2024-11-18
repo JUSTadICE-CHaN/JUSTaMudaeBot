@@ -95,13 +95,13 @@ class MyClient(discord.Client):
             return
 
         match = re.search(r"""^.*?\*\*(.*?)\*\*.*?                          # Group 1: Username
-                                (can't|can).*?                              # Group 2: Claim available
+                                (pouvez|remarier).*?                         # Group 2: Claim available
                                 (\d+(?:h\ \d+)?)(?=\*\*\ min).*?            # Group 3: Claim reset
                                 (\d+(?:h\ \d+)?)(?=\*\*\ min).*?            # Group 4: Rolls reset
-                                (?<=\$daily).*?(available|\d+h\ \d+).*?     # Group 5: $daily reset
-                                (can't|can).*?(?=react).*?                  # Group 6: Kakera available
-                                (?:(\d+(?:h\ \d+)?)(?=\*\*\ min)|(now)).*?  # Group 7: Kakera reset
-                                (?<=\$dk).*?(ready|\d+h\ \d+)               # Group 8: $dk reset
+                                (?<=\$daily).*?(disponible|\d+h\ \d+).*?    # Group 5: $daily reset
+                                (pouvez|pas).*?(?=réagir).*?               # Group 6: Kakera available
+                                (?:(\d+(?:h\ \d+)?)(?=\*\*\ min)|(maintenant)).*?  # Group 7: Kakera reset
+                                (?<=\$dk).*?(prêt|\d+h\ \d+)                # Group 8: $dk reset
                                 .*$                                         # End of string
                                 """, message.content, re.DOTALL | re.VERBOSE)
         if not match or match.group(1) != self.user.name:
@@ -109,8 +109,8 @@ class MyClient(discord.Client):
             return
 
         times = [self.parse_time(match.group(i)) for i in [3, 4, 5, 7]]
-        kakera_available = match.group(6) == 'can'
-        claim_available = match.group(2) == 'can'
+        kakera_available = match.group(6) == 'pouvez'
+        claim_available = match.group(2) == 'pouvez'
 
         timing_info = {
             'claim_reset': datetime.datetime.now() + datetime.timedelta(minutes=times[0]),
@@ -130,7 +130,7 @@ class MyClient(discord.Client):
         elif 'h ' in time_str:
             hours, minutes = map(int, time_str.split('h '))
             return hours * 60 + minutes
-        elif time_str in {'ready', 'now', 'available'}:
+        elif time_str in {'prêt', 'maintenant', 'disponible'}:
             return 0
         else:
             return int(time_str)
@@ -267,7 +267,7 @@ class MyClient(discord.Client):
 
     async def handle_bot_message(self, message):
         if message.author.id == bot_id:
-            if 'Upvote Mudae to reset the timer:' in message.content and f'**{self.user.name}**' in message.content:
+            if 'Upvote Mudae pour réinitialiser ce temps :' in message.content and f'**{self.user.name}**' in message.content:
                 channel_id = message.channel.id
                 self.rolling[channel_id].rolling_event.set()
 
