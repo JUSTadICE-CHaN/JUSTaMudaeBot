@@ -267,7 +267,7 @@ class MyClient(discord.Client):
 
     async def handle_bot_message(self, message):
         if message.author.id == bot_id:
-            if 'Upvote Mudae to reset the timer:' in message.content and f'**{self.user.name}**' in message.content:
+            if 'Upvote Mudae pour réinitialiser ce temps:' in message.content and f'**{self.user.name}**' in message.content:
                 channel_id = message.channel.id
                 self.rolling[channel_id].rolling_event.set()
 
